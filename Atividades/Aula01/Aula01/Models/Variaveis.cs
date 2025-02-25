@@ -29,9 +29,20 @@
 
 
 		}
+		public byte Minbyte = 0;
+		public byte Maxbyte = 255;
 
+		public short Minshort = -32768;
+		public short Maxshort = 32767;
 
+		public int Minint = -2147483648;
+		public int Maxint = 2147483647;
 
+		public uint Minuint = 0;
+		public uint Maxuint = 4294967295;
+
+		public long Minlong  = -9223372036854775808;
+		public long Maxlong  = 9223372036854775807;
 
 	}
 }
