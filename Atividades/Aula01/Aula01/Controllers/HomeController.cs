@@ -15,7 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        Variaveis minhavariavel = new Variaveis();
+
+        return View(minhavariavel);
     }
 
     public IActionResult Privacy()
