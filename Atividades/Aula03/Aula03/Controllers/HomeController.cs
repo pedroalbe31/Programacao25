@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using Aula03.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +29,7 @@ namespace Aula03.Controllers
                         Sentença de código a ser executada, caso a condição seja verdadeira
                     }
 
-                Caso o If tenha apenas uma linha de comando a ser executada naa condicional, não há necessidade
+                Caso o If tenha apenas uma linha de comando a ser executada na condicional, não há necessidade
                 do uso das chaves.
                 if(expressão boleana)
                     Apenas um comando
@@ -115,9 +116,44 @@ namespace Aula03.Controllers
 
             string retorno = string.Empty;
 
-            for (int i = 0; i < x; i++)
+            for (int i = 1; i <= x; i++)
             {
+                // E se eu quisesse interromper o laço?
+                // Caso ele fosse maior que 50
+                if (i > 50)
+                    break; // O comando break interrompe o laço
+
+                // Caso eu deseje que o laço siga em frente
+                // Forçando a continuar a execução
+                if ((i % 2) != 0)
+                    continue;
+
+
                 retorno += $"{i}; ";            
+            }
+            return retorno;
+        }
+
+        [HttpGet]
+        public string GetForeach(string color)
+        {
+            /*
+                o comando foreach (para cada) é utilizado para    
+                iterar por uma sequência de items em uma coleção
+                e servir como uma opção simples de repetição.
+            */
+            string[] colors = { "Vermelho", "Preto", "Azul", "Amarelo", "Verde", "Branco", "Azul-Marinho", "Rosa", "Roxo", "Cinza" };
+
+            string retorno = string.Empty;
+
+            if (colors.Contains(char.ToUpper(color[0]) + color.Substring(1)))
+                retorno = "A cor escolhida é válida";
+            else
+                retorno =  "Cor escolhida inválida";
+
+            foreach (string s in colors)
+            {
+                retorno += $" [{s}]";         
             }
             return retorno;
         }
