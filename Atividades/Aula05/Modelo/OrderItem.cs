@@ -10,14 +10,15 @@ namespace Modelo
 		public double PurchasePrice { get; set; }
 		public bool Validate()
 		{
-			return true;
+			bool isValid = true;
+
+			isValid = (Id > 0) && 
+					  (Quantity > 0) &&
+					  (PurchasePrice > 0) &&
+					  Product != null;
+
+			return isValid;
 		}
-		public OrderItem Retrieve()
-		{
-			return new OrderItem();
-		}
-		public void Save(OrderItem orderItem)
-		{
-		}
+		
 	}
 }

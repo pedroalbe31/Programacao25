@@ -8,14 +8,14 @@
 		public double CurrentePrice { get; set; }
 		public bool Validate()
 		{
-			return true;
-		}
-		public Product Retrieve()
-		{
-			return new Product();
-		}
-		public void Save(Product product)
-		{
+			bool isValid = true;
+
+			isValid = 
+				!string.IsNullOrEmpty(this.ProductName) &&
+				(this.Id > 0) && 
+				(this.CurrentePrice >0);
+			
+			return isValid;
 		}
 	}
 }
