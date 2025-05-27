@@ -12,7 +12,6 @@ namespace Repository
 
 			return null!;
 		}
-
 		public List<Customer> RetriveByName(string name)  //(buscar por nome)
 		{
 			List<Customer> ret = new List<Customer>();
