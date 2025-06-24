@@ -2,13 +2,13 @@
 
 namespace Repository
 {
-	public class OrderItem
+	public class OrderItemRepository
 	{
 		public OrderItem Retrieve(int Id)
 		{
-			foreach (OrderItem p in OrderItemData.OrderItems)
-				if (p.Id == Id)
-					return p;
+			foreach (OrderItem o in OrderItemData.OrderItens)
+				if (o.Id == Id)
+					return o;
 
 			return null!;
 		}
@@ -16,27 +16,27 @@ namespace Repository
 		{
 			List<OrderItem> ret = new List<OrderItem>();
 
-			foreach (OrderItem p in OrderItemData.OrderItems)
+			foreach (OrderItem o in OrderItemData.OrderItens)
 
-				if (p.OrderItemName!.ToLower().Contains(name.ToLower()))
-					ret.Add(p);
+				if (o.OrderItemName!.ToLower().Contains(name.ToLower()))
+					ret.Add(o);
 
 			return ret;
 		}
 		public List<OrderItem> RetrieveAll()
 		{
-			return OrderItemData.OrderItems;
+			return OrderItemData.OrderItens;
 		}
 
 		public void Save(OrderItem product)
 		{
 			product.Id = Getcount() + 1;
-			OrderItemData.OrderItems.Add(product);
+			OrderItemData.OrderItens.Add(product);
 		}
 
 		public bool Delete(OrderItem product)
 		{
-			return OrderItemData.OrderItems.Remove(product);
+			return OrderItemData.OrderItens.Remove(product);
 		}
 
 		public bool DeleteById(int id)
@@ -55,6 +55,6 @@ namespace Repository
 
 		}
 
-		public int Getcount() => CustomerData.Orders.Count;
+		public int Getcount() => OrderItemData.Orders.Count;
 	}
 }
